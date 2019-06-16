@@ -1,12 +1,13 @@
+#!/usr/bin/env python2
 import socket
 import os
 from time import sleep
 
-proxy_socket_name = "/var/run/docker.sock"
-org_socket_name = "/var/run/docker.sock.org"
+proxy_socket_name = "/var/run/my_docker.sock"
+org_socket_name = "/var/run/docker.sock"
 
 listen_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-os.unlink(proxy_socket_name)
+os.system("rm {}".format(proxy_socket_name))
 listen_socket.bind(proxy_socket_name)
 listen_socket.listen(1)
 
