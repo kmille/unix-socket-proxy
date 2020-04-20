@@ -1,5 +1,12 @@
 # Playing around with unix domain sockets and python
 
+solves the problem: two processes are communicating over an unix domain socket. But what are they talking about?   
+Idea: man in the middle the communication. e.g for Docker:  
+1) our script listens to /var/run/my_docker.sock and connects to the Docker socket /var/run/docker.sock
+2) let the Docker client use our socket (docker -H unix:///var/run/my_docker.sock  ps)
+3) (if this does not work: can tell the upstream application to listen on a different socket an than you can listen on the original socket. The client will connect to you)
+
+Let the listening application listen on a diferrent socket und our script creates a domain socket with the 
 # Example Client/Server 
 ```
 kmille@homebox unix-socket.git master % python2 server.py
