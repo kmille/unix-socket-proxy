@@ -6,8 +6,7 @@ Idea: man in the middle the communication. e.g for Docker:
 2) let the Docker client use our socket (docker -H unix:///var/run/my_docker.sock  ps)
 3) (if this does not work: can tell the upstream application to listen on a different socket an than you can listen on the original socket. The client will connect to you)
 
-Let the listening application listen on a diferrent socket und our script creates a domain socket with the 
-# Example Client/Server 
+# Example: simple echo client/server 
 ```
 kmille@homebox unix-socket.git master % python2 server.py
 starting up on ./uds_socket
